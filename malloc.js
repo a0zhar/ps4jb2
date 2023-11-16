@@ -22,5 +22,5 @@ let malloc_nogc = [];
 function malloc(sz) {
   let newarr = new Uint8Array(sz);
   malloc_nogc.push(newarr);
-  return read_ptr_at(addrof(arr) + 0x10);
+  return read_ptr_at(addrof(newarr) + 0x10);
 }
