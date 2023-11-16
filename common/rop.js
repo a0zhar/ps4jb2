@@ -24,7 +24,7 @@ function get_got_addr(idx) {
   return read_ptr_at(offset);
 }
 
-//these are not real bases but rather some low addresses
+// these are not real bases but rather some low addresses
 var webkit_base = read_ptr_at(fake_vtable);
 var libkernel_base = get_got_addr(705) - 0x10000;
 var libc_base = get_got_addr(582);
